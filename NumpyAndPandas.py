@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
 
 df = pd.read_csv("Austin_Animal_Center_Intakes.csv")
 #Dataset: https://data.austintexas.gov/Health-and-Community-Services/Austin-Animal-Center-Intakes/wter-evkm
@@ -79,15 +81,19 @@ newDf
 
 #DATA ANALYSIS
 #Since the data has more categorical attributes, the analysis has frequency distribution
-#1: For type of Animals
+#1: Since we extracted the year out of the dateTime column, lets plot histogram
+newDf.hist(bins=20,figsize=(20,15))
+plt.show()
+
+#2: For type of Animals
 pd.crosstab(index=newDf["Animal_Type"], columns="count")
 
-#2: For year vise count
+#3: For year vise count
 pd.crosstab(index=newDf["year"], columns="count")
 
-#3: For Intake condition
+#4: For Intake condition
 pd.crosstab(index=newDf["Intake_Condition"], columns="count")
 
-#4: For different intake types
+#5: For different intake types
 pd.crosstab(index=newDf["Intake_Type"], columns="count")
 
